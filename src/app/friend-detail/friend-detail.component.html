@@ -1,0 +1,16 @@
+<!--If friend (bind by selectedFriend) is set, then display this div-->
+<!--Setting *ngIf prevents errors from arising upon page load, as friend is empty by default-->
+<div *ngIf="friend">
+  <h2>{{friend.name | uppercase}}'s Details</h2>
+  <div><span>id: </span>{{friend.id}}</div>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="friend.name" placeholder="name" />
+    </label>
+  </div>
+</div>
+
+<!--Saves changes-->
+<button (click)="save()">Save Changes</button>
+<!--Returns to the previous page-->
+<button (click)="goBack()">Go Back</button>

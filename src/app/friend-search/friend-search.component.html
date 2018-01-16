@@ -1,0 +1,14 @@
+<div id="search-component">
+  <!--As user types, keyup event binding calls search(searchBox.value) each time value changes-->
+  <label>Search
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
+  </label>
+
+  <ul class="search-result">
+    <!--friends$ ; using $ indicates that the object returning is an Observable, not an array-->
+    <!--While *ngFor cannot do anything with an Observable, async (AsyncPipe) subscribes to an Observable automatically-->
+    <li *ngFor="let friend of friends$ | async">
+      <a routerLink="/friends/{{friend.id}}">{{friend.name}}</a>
+    </li>
+  </ul>
+</div>

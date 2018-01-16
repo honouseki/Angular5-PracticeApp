@@ -1,0 +1,51 @@
+<div>
+  <h2>My Wonderful Friends</h2>
+
+    <!--To add a new friend-->
+    <div>
+      <label>New Friend:
+        <!--Input set to 'friendName' so as to reference its value when button is clicked-->
+        <input #friendName />
+      </label>
+      <!--Upon click, triggers the add function with input value from #friendName, then clears input for next use-->
+      <button (click)="add(friendName.value); friendName.value=''">Add</button>
+    </div>
+
+  <ul class="friends">
+    <!--Similar to ng-repeat="for friend in friends" ng-click="$ctrl.onSelect(friend)" ng-class="className:conditionalVar"-->
+    <!--Loops through friends (list), friend as each individual object, repeats template (list item)-->
+    <!--Upon click of any specific item, run "onSelect(friend)-->
+    <!--[class.selected] Add "selected" class to active list item when friend === selectedFriend; removes automatically when not-->
+    <!--<li *ngFor="let friend of friends" (click)="onSelect(friend)" [class.selected]="friend === selectedFriend">
+      <span class="badge">{{friend.id}}</span> {{friend.name}}
+    </li>-->
+
+    <!--Refactoring: Using parameterized hyperlinks to lead to details;
+        This makes the onSelect() method useless now, but we will keep those around as reference-->
+    <li *ngFor="let friend of friends">
+      <a routerLink="/friends/{{friend.id}}">
+        <span class="badge">{{friend.id}}</span> {{friend.name}}
+      </a>
+      <button class="delete pull-right" title="delete friend" (click)="delete(friend)">X</button>
+    </li>
+  </ul>
+</div>
+
+<!--If selectedFriend is set, then display this div-->
+<!--Setting *ngIf prevents errors from arising upon page load, as selectedFriend is empty by default-->
+<!--<div *ngIf="selectedFriend">
+  <p>
+    Selected Friend: {{selectedFriend.id}}: {{selectedFriend.name | uppercase}}
+  </p>
+  <div>
+    <label>Name: </label>
+    <input [(ngModel)]="selectedFriend.name" placeholder="Name" />
+  </div>
+</div>-->
+
+<!--COMPONENT WITHIN A COMPONENT...whilst binding selectedHero-->
+<!--This creates a component out of the above code;
+    breaking down these components to individual responsibilities (details) makes it easier to manage-->
+<!--<app-friend-detail [friend]="selectedFriend"></app-friend-detail>-->
+
+

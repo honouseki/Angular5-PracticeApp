@@ -1,0 +1,10 @@
+<!--Displays only if messages array length > 0-->
+<div *ngIf="messageService.messages.length">
+  <h2>Messages</h2>
+  <!--Displays each message in messageService.messages array with *ngFor [loop]-->
+  <ul *ngFor="let message of messageService.messages">
+    <li><i>{{message}}</i></li>
+  </ul>
+  <!--When clicked, triggers messageService.clear() function to empty messages array-->
+  <button class="clear" (click)="messageService.clear()">Clear Messages</button>
+</div>

@@ -1,0 +1,10 @@
+<h3>First Four Friends (on the list)</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let friend of friends" class="col-1-4" routerLink="/friends/{{friend.id}}">
+    <div class="module friend">
+      <h4>{{friend.name}}</h4>
+    </div>
+  </a>
+</div>
+<!--Search bar component-->
+<app-friend-search></app-friend-search>
